@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import model.dao.DaoFactory;
@@ -30,6 +31,11 @@ public class Program {
 		
 		List<Seller> list2 = sellerTeste.findAll();
 		list2.forEach(System.out::println);
+		
+		System.err.println("\n=====Teste 4: inserir seller======");
+		Seller novoEmpregado = new Seller(null, "Mário Fonseca", "mario@desban.org.br", new Date(), 4000.0, dep);
+		sellerTeste.insert(novoEmpregado);
+		System.out.println("Novo id do empregado = "+novoEmpregado.getId());
 		
 
 	}
