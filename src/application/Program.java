@@ -1,7 +1,10 @@
 package application;
 
+import java.util.List;
+
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
@@ -16,10 +19,13 @@ public class Program {
 		//para instaciar um SellerDaoJDB que são as implementações exemplo abaixo. Não tem new pois os procedimentos são estaticos.
 		SellerDao sellerTeste =  DaoFactory.createSellerDao();
 		System.err.println("=====Teste 1: seller findById======");
-		
-		
 		Seller seller = sellerTeste.findById(3);
 		System.out.println(seller);
+		System.err.println("\n=====Teste 2: seller findByDepartment======");
+		Department dep = new Department(2, null);
+		List<Seller> list = sellerTeste.findByDepartment(dep); 
+		//expressão labda abaixo. 
+		list.forEach(System.out::println);
 		
 
 	}
