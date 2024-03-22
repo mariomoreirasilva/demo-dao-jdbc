@@ -42,6 +42,12 @@ public class Program {
 		seller.setName("Maria teste");
 		sellerTeste.update(seller);
 		System.out.println("Atualizado");
+		
+		System.err.println("\n=====Teste 6: delete seller======");
+		sellerTeste.deleteById(2);
+		System.out.println("apagou");
+		
+		
 
 	}
 
