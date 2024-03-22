@@ -15,6 +15,8 @@ public class Program {
 		//System.out.println(seller);
 		//para instaciar um SellerDaoJDB que são as implementações exemplo abaixo. Não tem new pois os procedimentos são estaticos.
 		SellerDao sellerTeste =  DaoFactory.createSellerDao();
+		System.err.println("=====Teste 1: seller findById======");
+		
 		
 		Seller seller = sellerTeste.findById(3);
 		System.out.println(seller);

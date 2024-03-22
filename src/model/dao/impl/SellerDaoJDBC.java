@@ -57,9 +57,12 @@ public class SellerDaoJDBC implements SellerDao {
 			rs = st.executeQuery();
 			//testar se o result set trouxe valores. se sair do if é semelhante ao recordcount = 0
 			if (rs.next()) {
-				Department dep = new Department();
-				dep.setId(rs.getInt("DepartmentId"));
-				dep.setName(rs.getString("DepName"));
+				//Department dep = new Department();
+				//dep.setId(rs.getInt("DepartmentId"));
+				//dep.setName(rs.getString("DepName"));
+				//melhor colocar uma função que instancia os objetos. Imagina um result set grande ia ter muitos set...
+				Department dep = instantiateDepartment(rs);
+				/*
 				Seller obj = new Seller();
 				obj.setId(rs.getInt("Id"));
 				obj.setName(rs.getString("Name"));
@@ -67,6 +70,8 @@ public class SellerDaoJDBC implements SellerDao {
 				obj.setbaseSalary(rs.getDouble("BaseSalary"));
 				obj.setBirthDate(rs.getDate("BirthDate"));
 				obj.setDepartament(dep);
+				*/
+				Seller obj = instantiateSeller(rs,dep);
 				return obj;
 				
 			}
@@ -81,6 +86,26 @@ public class SellerDaoJDBC implements SellerDao {
 			DB.closeResultSet(rs);
 		}
 		
+	}
+
+	private Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
+		Seller obj = new Seller();
+		obj.setId(rs.getInt("Id"));
+		obj.setName(rs.getString("Name"));
+		obj.setEmail(rs.getString("Email"));
+		obj.setbaseSalary(rs.getDouble("BaseSalary"));
+		obj.setBirthDate(rs.getDate("BirthDate"));
+		obj.setDepartament(dep);
+		return obj;
+		
+	}
+
+	private Department instantiateDepartment(ResultSet rs) throws SQLException {
+		//não precisa tratar com try (deu erro antes do throws de propagação acima)
+		Department dep = new Department();
+		dep.setId(rs.getInt("DepartmentId"));
+		dep.setName(rs.getString("DepName"));
+		return dep;
 	}
 
 	@Override
