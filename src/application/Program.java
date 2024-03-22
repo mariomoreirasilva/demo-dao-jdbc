@@ -37,6 +37,11 @@ public class Program {
 		sellerTeste.insert(novoEmpregado);
 		System.out.println("Novo id do empregado = "+novoEmpregado.getId());
 		
+		System.err.println("\n=====Teste 5: update seller======");
+		seller = sellerTeste.findById(1);
+		seller.setName("Maria teste");
+		sellerTeste.update(seller);
+		System.out.println("Atualizado");
 
 	}
 
