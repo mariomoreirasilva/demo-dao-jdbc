@@ -26,6 +26,10 @@ public class Program {
 		List<Seller> list = sellerTeste.findByDepartment(dep); 
 		//expressão labda abaixo. 
 		list.forEach(System.out::println);
+		System.err.println("\n=====Teste 3: seller findAll======");
+		
+		List<Seller> list2 = sellerTeste.findAll();
+		list2.forEach(System.out::println);
 		
 
 	}
